@@ -9,6 +9,7 @@ use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
+use app\assets\AppAsset;
 
 //AppAsset::register($this);
 ?>
@@ -21,27 +22,32 @@ use yii\widgets\Breadcrumbs;
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
-
+    <?php $this->head() ?>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/site.css">
-    <!-- /css/slate.css -->
-    <link rel="stylesheet" href="/css/slate.css">
+    <!-- /css/sandstone.min.css -->
+    <link rel="stylesheet" href="/css/sandstone.min.css">
 
     <!-- jQuery library -->
-    <script src="/js/jquery.min.js"></script>
-
+<!--    <script src="/js/jquery.min.js"></script>-->
+<!--    <script src="/js/jquery-3.3.1.min.js"></script>-->
     <!-- Latest compiled JavaScript -->
     <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/tinymce/tinymce.min.js"></script>
 
-
+    <script src="/js/tinymce/tinymce.min.js"></script>
+    <script>tinymce.init({
+            selector:'textarea',
+            plugins : 'advlist autolink link lists print preview',
+        });</script>
 </head>
 <body>
 <?php $this->beginBody() ?>
 <div class="container" style="margin-top: 15px">
     <?php
     NavBar::begin([
-        'brandLabel' => Yii::$app->name,
+        'brandLabel' => 'SCMA CMS',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-default',
@@ -61,7 +67,7 @@ use yii\widgets\Breadcrumbs;
                 '<li>'
                 . Html::beginForm(['/site/logout'], 'post')
                 . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
+                    'Logout (' . Yii::$app->user->identity->name . ')',
                     ['class' => 'btn btn-link logout']
                 )
                 . Html::endForm()
