@@ -4,8 +4,69 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "ee09350cc5635681e85529769afa9a85",
+    "content-hash": "1272bb5efe242fbed4187359eabe0266",
     "packages": [
+        {
+            "name": "2amigos/yii2-gallery-widget",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/2amigos/yii2-gallery-widget.git",
+                "reference": "0ce7de28d05a4662da7698773993b5a0245a6136"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/2amigos/yii2-gallery-widget/zipball/0ce7de28d05a4662da7698773993b5a0245a6136",
+                "reference": "0ce7de28d05a4662da7698773993b5a0245a6136",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/blueimp-gallery": "~2.17.0",
+                "yiisoft/yii2": "~2.0.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0",
+                "scrutinizer/ocular": "~1.1"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "asset-installer-paths": {
+                    "npm-asset-library": "vendor/npm",
+                    "bower-asset-library": "vendor/bower"
+                },
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "dosamigos\\gallery\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "2amigOS! Consulting Group",
+                    "email": "hola@2amigos.us",
+                    "homepage": "http://2amigos.us",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Blueimp gallery widget for the Yii framework",
+            "homepage": "https://github.com/2amigos/yii2-gallery-widget",
+            "keywords": [
+                "2amigos",
+                "gallery",
+                "widget",
+                "yii",
+                "yii 2",
+                "yii2"
+            ],
+            "time": "2017-09-09T16:01:44+00:00"
+        },
         {
             "name": "bizley/quill",
             "version": "2.3.0",
@@ -52,6 +113,22 @@
                 "yii2"
             ],
             "time": "2018-11-29T11:19:09+00:00"
+        },
+        {
+            "name": "bower-asset/blueimp-gallery",
+            "version": "v2.17.0",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:blueimp/Gallery.git",
+                "reference": "8336bb5934cb623608808601129db3fbf9201a09"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/blueimp/Gallery/zipball/8336bb5934cb623608808601129db3fbf9201a09",
+                "reference": "8336bb5934cb623608808601129db3fbf9201a09",
+                "shasum": null
+            },
+            "type": "bower-asset"
         },
         {
             "name": "bower-asset/bootstrap",
@@ -224,6 +301,22 @@
             },
             "require": {
                 "bower-asset/jquery": ">=1.7"
+            },
+            "type": "bower-asset"
+        },
+        {
+            "name": "bower-asset/video.js",
+            "version": "v5.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/videojs/video.js.git",
+                "reference": "19ee5100eaed903862203e169b1567f84c093548"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/videojs/video.js/zipball/19ee5100eaed903862203e169b1567f84c093548",
+                "reference": "19ee5100eaed903862203e169b1567f84c093548",
+                "shasum": null
             },
             "type": "bower-asset"
         },
@@ -1881,6 +1974,64 @@
                 "yii2"
             ],
             "time": "2017-07-26T13:29:33+00:00"
+        },
+        {
+            "name": "wbraganca/yii2-videojs-widget",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wbraganca/yii2-videojs-widget.git",
+                "reference": "e8d0f161af6a5cc47e3c74edee680879d94818a8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wbraganca/yii2-videojs-widget/zipball/e8d0f161af6a5cc47e3c74edee680879d94818a8",
+                "reference": "e8d0f161af6a5cc47e3c74edee680879d94818a8",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/video.js": "~5.1.0",
+                "yiisoft/yii2": "~2.0"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "asset-installer-paths": {
+                    "npm-asset-library": "vendor/npm",
+                    "bower-asset-library": "vendor/bower"
+                },
+                "asset-ignore-files": {
+                    "bower-asset/video.js": [
+                        "*/**",
+                        "!dist/*"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "wbraganca\\videojs\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Wanderson Bragança",
+                    "email": "wanderson.wbc@gmail.com",
+                    "homepage": "http://wbraganca.com"
+                }
+            ],
+            "description": "The yii2-videojs-widget is a Yii 2 wrapper for the [video.js](http://www.videojs.com/). A JavaScript and CSS library that makes it easier to work with and build on HTML5 video. This is also known as an HTML5 Video Player.",
+            "keywords": [
+                "html5 video",
+                "videojs",
+                "yii2",
+                "yii2-extension",
+                "yii2-videojs",
+                "yii2-videojs-widget"
+            ],
+            "time": "2015-11-05T18:39:32+00:00"
         },
         {
             "name": "yii2tech/filedb",

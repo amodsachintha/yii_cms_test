@@ -28,6 +28,7 @@ use app\assets\AppAsset;
     <link rel="stylesheet" href="/css/site.css">
     <!-- /css/sandstone.min.css -->
     <link rel="stylesheet" href="/css/sandstone.min.css">
+    <link rel="stylesheet" href="/css/viewer.min.css">
 
     <!-- jQuery library -->
 <!--    <script src="/js/jquery.min.js"></script>-->
@@ -36,7 +37,7 @@ use app\assets\AppAsset;
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/tinymce/tinymce.min.js"></script>
 
-    <script src="/js/tinymce/tinymce.min.js"></script>
+    <script src="/js/viewer.min.js"></script>
     <script>tinymce.init({
             selector:'textarea',
             plugins : 'advlist autolink link lists print preview',

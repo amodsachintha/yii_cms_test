@@ -49,7 +49,7 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
+            'name' => 'User Name',
             'email' => 'Email',
             'password' => 'Password',
             'created_at' => 'Created At',

@@ -133,8 +133,44 @@ class PostController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if (Yii::$app->request->isPost) {
+            $data = Yii::$app->request->post()['Post'];
+
+            $model->user_id = Yii::$app->user->id;
+            $model->title = $data['title'];
+            $model->content = $data['content'];
+            $model->category_id = $data['category_id'];
+
+            //file uploads
+
+            $image = UploadedFile::getInstance($model, 'image');
+            $video = UploadedFile::getInstance($model, 'video');
+
+            try{
+                if(!is_null($image)){
+                    $imageUrl = md5(random_bytes(16)) . '.' . $image->extension;
+                    $image->saveAs('uploads/images/' . $imageUrl);
+                    $model->image = $imageUrl;
+                }
+
+                if(!is_null($video)){
+                    $videoUrl = md5(random_bytes(16)) . '.' . $video->extension;
+                    $video->saveAs('uploads/videos/' .$videoUrl);
+                    $model->video = $videoUrl;
+                }
+            }catch (\Exception $exception){
+                die($exception->getMessage());
+            }
+
+
+            $date = new \DateTime();
+            $model->created_at = $date->format('Y-m-d H:i:s');
+            $model->updated_at = $date->format('Y-m-d H:i:s');
+
+            if ($model->save()) {
+                Yii::$app->session->setFlash('success', 'Post created!');
+                return $this->redirect(['index']);
+            }
         }
 
         return $this->render('update', [
@@ -151,7 +187,15 @@ class PostController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        if(!is_null($model->image)){
+            unlink(Yii::$app->basePath . '/web/uploads/images/' .$model->image);
+        }
+        if(!is_null($model->video)){
+            unlink(Yii::$app->basePath . '/web/uploads/videos/' .$model->video);
+        }
+        Yii::$app->session->setFlash('success',   'Post and Content Deleted!');
+        $model->delete();
 
         return $this->redirect(['index']);
     }
