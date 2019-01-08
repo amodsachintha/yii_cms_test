@@ -93,7 +93,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
             <?php if (Yii::$app->user->can('manageUsers')): ?>
                 <div class="col-lg-4">
-                    <div class="panel panel-default" style="box-shadow: 2px 12px 30px -12px rgba(133,133,133,1);">
+                    <div class="panel panel-warning" style="box-shadow: 2px 12px 30px -12px rgba(133,133,133,1);">
 
                         <div class="panel-heading">
                             <h2>Manage CMS Users</h2>
