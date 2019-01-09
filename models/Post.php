@@ -38,7 +38,9 @@ class Post extends \yii\db\ActiveRecord
         return [
             [['user_id', 'category_id', 'title', 'content'], 'required'],
             [['user_id', 'category_id'], 'integer'],
-            [['content','image','video'], 'string'],
+            [['content'], 'string'],
+            [['image'], 'file', 'extensions' => 'jpg, png', 'mimeTypes' => 'image/jpeg, image/png',],
+            [['video'], 'file', 'extensions' => 'mp4, flv', 'mimeTypes' => 'video/mp4, video/x-flv',],
             [['created_at', 'updated_at'], 'safe'],
             [['title'], 'string', 'max' => 191],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Category::className(), 'targetAttribute' => ['category_id' => 'id']],

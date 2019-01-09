@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 
-$this->title = 'All Documents';
+$this->title = 'All Posts';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-docs">

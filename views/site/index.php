@@ -49,7 +49,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>";
     } else {
         echo "<div class='alert alert-warning text-center'>
-                You are logged in as <strong>Content Creator.</strong>
+                You are logged in as <strong>Content Editor.</strong>
             </div>";
     }
     ?>

@@ -7,7 +7,9 @@ use app\models\User;
 use Yii;
 use app\models\Post;
 use app\models\searches\PostSearch;
+use yii\validators\ImageValidator;
 use yii\web\Controller;
+use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
@@ -39,6 +41,11 @@ class PostController extends Controller
                         'actions' => ['index','view','create','update','delete'],
                         'roles' => ['content_editor','super_admin'],
                     ],
+                    [
+                        'allow' => true,
+                        'actions' => ['index','view'],
+                        'roles' => ['?'],
+                    ],
                 ],
             ],
         ];
@@ -52,14 +59,6 @@ class PostController extends Controller
     {
         $searchModel = new PostSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
-//        $auth = Yii::$app->authManager;
-//        $admin = $auth->getRole('super_admin');
-//        $manageUsers = $auth->createPermission('manageUsers');
-//        $auth->add($manageUsers);
-//
-//        $auth->addChild($admin,$manageUsers);
-
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -123,10 +122,17 @@ class PostController extends Controller
             $model->created_at = $date->format('Y-m-d H:i:s');
             $model->updated_at = $date->format('Y-m-d H:i:s');
 
-            if ($model->save()) {
-                Yii::$app->session->setFlash('success', 'Post created!');
+            if($model->validate()){
+                if ($model->save()) {
+                    Yii::$app->session->setFlash('success', 'Post created!');
+                    return $this->redirect(['index']);
+                }
+            }else{
+                Yii::$app->session->setFlash('danger', 'Validation Failed');
                 return $this->redirect(['index']);
             }
+
+
         }
 
         return $this->render('create', [
@@ -179,8 +185,13 @@ class PostController extends Controller
             $model->created_at = $date->format('Y-m-d H:i:s');
             $model->updated_at = $date->format('Y-m-d H:i:s');
 
-            if ($model->save()) {
-                Yii::$app->session->setFlash('success', 'Post created!');
+            if($model->validate()){
+                if ($model->save()) {
+                    Yii::$app->session->setFlash('success', 'Post Updated!');
+                    return $this->redirect(['index']);
+                }
+            }else{
+                Yii::$app->session->setFlash('danger', 'Validation Failed');
                 return $this->redirect(['index']);
             }
         }
