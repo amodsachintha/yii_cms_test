@@ -27,11 +27,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?php foreach (\app\models\Post::find()->orderBy(new Expression('rand()'))->limit(3)->all() as $post) {
                     $created = Yii::$app->formatter->asDate($post->created_at);
                     $content = Yii::$app->formatter->asHtml(str_split($post->content, 70)[0]);
+                    $url = '/post/view?id='.$post->id;
                     echo "<div class='col-lg-4'>
                     <h2>$post->title</h2>
                     <small>$created</small>
                     <p >$content</p>
-                    <p><a class='btn btn-default' href='#'>Read More &raquo;</a></p>
+                    <p><a class='btn btn-default' href='$url'>Read More &raquo;</a></p>
                 </div>";
                 }
 
